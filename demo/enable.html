@@ -194,13 +194,15 @@ $(document).ready(function() {
         var bootstrapValidator = $('#checkoutForm').data('bootstrapValidator'),
             shipNewAddress     = ($(this).val() == 'new');
 
-        shipNewAddress ? $('#newAddress').find('.form-control').removeAttr('disabled')
-                       : $('#newAddress').find('.form-control').attr('disabled', 'disabled');
+       
 
         bootstrapValidator.enableFieldValidators('street', shipNewAddress)
                           .enableFieldValidators('city', shipNewAddress)
                           .enableFieldValidators('country', shipNewAddress)
                           .enableFieldValidators('state', shipNewAddress && $('select[name="country"]').val() == 'US');
+
+        shipNewAddress ? $('#newAddress').find('.form-control').removeAttr('disabled')
+                       : $('#newAddress').find('.form-control').attr('disabled', 'disabled');
     });
 
     $('select[name="country"]').on('change', function() {
